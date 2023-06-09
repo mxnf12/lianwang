@@ -1,10 +1,10 @@
 import { SubmitKey } from "../store/config";
 
 const cn = {
-  WIP: "该功能仍在开发中……",
+  WIP: "维护不易，赞助一下站长吧~",
   Error: {
     Unauthorized:
-      "访问密码不正确或为空，请前往[设置](/#/settings)页输入正确的访问密码，或者填入你自己的 OpenAI API Key。",
+      "## 🤖请将您原来的授权码填入设置\n\**您还未授权，填入授权码后可永久使用本网址，无任何提问限制。\n\本网站无限制使用GPT-4，不定时开放/GPT-4**\n\### ⭐获取地址\n\**关注公众号领取免费授权码：[屌毛资本情报站](http://img.iswl.tk/123/xc4.jpg)\n\永久授权码/GPT手工：[购买地址](http://km.mxnf.one)**",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 条对话`,
@@ -69,19 +69,6 @@ const cn = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "所有语言",
-      Options: {
-        cn: "简体中文",
-        en: "English",
-        tw: "繁體中文",
-        es: "Español",
-        it: "Italiano",
-        tr: "Türkçe",
-        jp: "日本語",
-        de: "Deutsch",
-        vi: "Vietnamese",
-        ru: "Русский",
-        cs: "Čeština",
-      },
     },
     Avatar: "头像",
     FontSize: {
@@ -94,7 +81,7 @@ const cn = {
       IsLatest: "已是最新版本",
       CheckUpdate: "检查更新",
       IsChecking: "正在检查更新...",
-      FoundUpdate: (x: string) => `发现新版本：${x}`,
+      FoundUpdate: (x: string) => `进群获取最新版本`,
       GoToUpdate: "前往更新",
     },
     SendKey: "发送键",
@@ -136,7 +123,7 @@ const cn = {
     },
     Token: {
       Title: "API Key",
-      SubTitle: "使用自己的 Key 可绕过密码访问限制",
+      SubTitle: "使用自己的 Key 可绕过密码访问限制，速度更快",
       Placeholder: "OpenAI API Key",
     },
 
@@ -150,10 +137,13 @@ const cn = {
       NoAccess: "输入 API Key 或访问密码查看余额",
     },
     AccessCode: {
-      Title: "访问密码",
-      SubTitle: "管理员已开启加密访问",
-      Placeholder: "请输入访问密码",
+      Title: "授权码",
+      SubTitle: "管理员已开启授权访问",
+      Placeholder: "请输入授权码",
     },
+
+
+   
     Model: "模型 (model)",
     Temperature: {
       Title: "随机性 (temperature)",
@@ -163,14 +153,14 @@ const cn = {
       Title: "单次回复限制 (max_tokens)",
       SubTitle: "单次交互所用的最大 Token 数",
     },
-    PresencePenlty: {
+    PresencePenalty: {
       Title: "话题新鲜度 (presence_penalty)",
       SubTitle: "值越大，越有可能扩展到新话题",
     },
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "有什么可以帮你的吗",
+    BotHello: "## 🤖欢迎使用\n\**GPT-4开放时间会在社群通知：[加入社区](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=IVySclMptpOHK7cj5Es78LyjeSS6i2OQ&authKey=ne%2FxnDUEpr3lNWpxZW1rqrpisqIXRg7yAhZej4UkKLbGQdQfwQn%2BLBXfho6iPgkG&noverify=0&group_code=467599493)\n\如GPT4无法使用，代表站长已关闭\n\您可继续返回到主网站畅享您的GPT3.5：[主网站](https://gpt6.iswl.tk)**\n\### ⭐特别说明\n\**AI工具大全：[ai.mxnf.one](http://ai.mxnf.one)\n\最新地址发布页：[mxnf.tk](http://mxnf.tk)\n\GPT账号/授权码等服务：[我们的商店](http://km.mxnf.one)**",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) =>
@@ -191,7 +181,7 @@ const cn = {
     Add: "新增预设对话",
   },
   Plugin: {
-    Name: "插件",
+    Name: "购买",
   },
   Mask: {
     Name: "面具",
@@ -218,6 +208,11 @@ const cn = {
     Config: {
       Avatar: "角色头像",
       Name: "角色名称",
+      Sync: {
+        Title: "使用全局设置",
+        SubTitle: "当前对话是否使用全局模型设置",
+        Confirm: "当前对话的自定义设置将会被自动覆盖，确认启用全局设置？",
+      },
     },
   },
   NewChat: {
@@ -239,6 +234,12 @@ const cn = {
   },
 };
 
-export type LocaleType = typeof cn;
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
+export type LocaleType = DeepPartial<typeof cn>;
+export type RequiredLocaleType = typeof cn;
 
 export default cn;
