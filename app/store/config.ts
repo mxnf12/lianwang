@@ -24,14 +24,13 @@ export const DEFAULT_CONFIG = {
   tightBorder: false,
   sendPreviewBubble: true,
   sidebarWidth: 300,
-  webSearch: false,
 
   disablePromptHint: false,
 
   dontShowMaskSplashScreen: false, // dont show splash screen when create chat
 
   modelConfig: {
-    model: "gpt-3.5-turbo-0613" as ModelType,
+    model: "gpt-3.5-turbo" as ModelType,
     temperature: 0.5,
     max_tokens: 2000,
     presence_penalty: 0,
@@ -62,6 +61,10 @@ export const ALL_MODELS = [
     available: ENABLE_GPT4,
   },
   {
+    name: "gpt-4-0613",
+    available: ENABLE_GPT4,
+  },
+  {
     name: "gpt-4-32k",
     available: ENABLE_GPT4,
   },
@@ -70,24 +73,8 @@ export const ALL_MODELS = [
     available: ENABLE_GPT4,
   },
   {
-    name: "gpt-4-0613",
-    available: ENABLE_GPT4,
-  },
-  {
     name: "gpt-4-32k-0613",
     available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-3.5-turbo-0613",
-    available: true,
-  },
-  {
-    name: "gpt-3.5-turbo-16k",
-    available: true,
-  },
-  {
-    name: "gpt-3.5-turbo-16k-0613",
-    available: true,
   },
   {
     name: "gpt-3.5-turbo",
@@ -95,6 +82,14 @@ export const ALL_MODELS = [
   },
   {
     name: "gpt-3.5-turbo-0301",
+    available: true,
+  },
+  {
+    name: "gpt-3.5-turbo-0613",
+    available: true,
+  },
+  {
+    name: "gpt-3.5-turbo-16k",
     available: true,
   },
   {
@@ -137,7 +132,7 @@ export function limitNumber(
 export function limitModel(name: string) {
   return ALL_MODELS.some((m) => m.name === name && m.available)
     ? name
-    : ALL_MODELS[4].name;
+    : "gpt-3.5-turbo";
 }
 
 export const ModalConfigValidator = {
@@ -181,10 +176,8 @@ export const useAppConfig = create<ChatConfigStore>()(
         state.modelConfig.historyMessageCount = 4;
         state.modelConfig.compressMessageLengthThreshold = 1000;
         state.dontShowMaskSplashScreen = false;
-        state.webSearch = false;
 
         return state;
       },
     },
   ),
-);
