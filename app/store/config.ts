@@ -58,25 +58,10 @@ export const ALL_MODELS = [
     available: ENABLE_GPT4,
   },
   {
-    name: "gpt-4-0314",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-4-32k",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-4-32k-0314",
-    available: ENABLE_GPT4,
-  },
-  {
     name: "gpt-4-0613",
     available: ENABLE_GPT4,
   },
   {
-    name: "gpt-4-32k-0613",
-    available: ENABLE_GPT4,
-  },
   {
     name: "gpt-3.5-turbo-0613",
     available: true,
@@ -91,10 +76,6 @@ export const ALL_MODELS = [
   },
   {
     name: "gpt-3.5-turbo",
-    available: true,
-  },
-  {
-    name: "gpt-3.5-turbo-0301",
     available: true,
   },
   {
